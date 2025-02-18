@@ -33,6 +33,17 @@ class HarborController extends Controller
         return response()->json($harbor);
     }
 
+    public function openHarbor(Harbor $harbor)
+    {
+        $harbor->update([
+            "open" => !$harbor->open
+        ]);
+
+        return response()->json([
+            "isOpen" => $harbor->open
+        ]);
+    }
+
     public function delete(Harbor $harbor)
     {
         $harbor->delete();
