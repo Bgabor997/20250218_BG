@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HarborController;
+use App\Http\Controllers\ShipController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,4 +26,19 @@ Route::group([
     "controller" => HarborController::class 
 ], function () {
     Route::get("/", "getAll");
+    Route::post("/", "create");
+    Route::put("/{harbor}", "update");
+    Route::delete("/{harbor}", "delete");
+});
+
+Route::group([
+    "prefix" => "ships",
+    "controller" => ShipController::class 
+], function () {
+    Route::get("/", "getAll");
+    Route::post("/", "create");
+    Route::put("/{ship}", "update");
+    Route::delete("/{ship}", "delete");
+
+    Route::post("/park/{ship}/{harbor}", "parkShip");
 });
