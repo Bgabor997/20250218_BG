@@ -19,4 +19,9 @@ class Ship extends Model
     {
         return $this->belongsTo(Ship::class);
     }
+
+    public function owners()
+    {
+        return $this->belongsToMany(Owner::class, "owner_ships");
+    }
 }

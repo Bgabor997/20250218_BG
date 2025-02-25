@@ -11,7 +11,7 @@ class ShipController extends Controller
     public function getAll()
     {
         $ships = Ship::query()
-            ->with("harbor")
+            ->with(["harbor", "owners"])
             ->get();
 
         return response()->json($ships);

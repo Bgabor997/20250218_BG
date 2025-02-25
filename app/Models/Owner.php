@@ -14,4 +14,9 @@ class Owner extends Model
         'address',
         'phone'
     ];
+
+    public function ships()
+    {
+        return $this->belongsToMany(Ship::class, "owner_ships");
+    }
 }
