@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HarborController;
+use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\ShipController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -43,4 +44,15 @@ Route::group([
     Route::delete("/{ship}", "delete");
 
     Route::post("/park/{ship}/{harbor}", "parkShip");
+});
+
+Route::group([
+    "prefix" => "owners",
+    "controller" => OwnerController::class
+], function () {
+    Route::get("/", "getAll");
+    
+    Route::post("/", "create");
+    Route::put("/{owner}", "update");
+    Route::delete("/{owner}", "delete");
 });
