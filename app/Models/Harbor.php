@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Factories\HarborsFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,5 +19,10 @@ class Harbor extends Model
     public function ships()
     {
         return $this->hasMany(Ship::class);
+    }
+
+    protected static function newFactory()
+    {
+        return HarborsFactory::new();
     }
 }
